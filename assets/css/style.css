@@ -1,0 +1,44 @@
+/* Mengunci tampilan agar terlihat seperti aplikasi mobile */
+body {
+    background-color: #f4f4f4;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#app-container {
+    max-width: 414px; /* Lebar standar layar HP */
+    margin: 0 auto;
+    background-color: #ffffff;
+    min-height: 100vh;
+    position: relative;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    overflow-x: hidden;
+    padding-bottom: 70px; /* Ruang untuk bottom nav */
+}
+
+/* Utility CSS */
+.search-bar { background-color: #f0f0f0; border-radius: 12px; border: none; }
+.category-icon { width: 60px; height: 60px; border-radius: 50%; object-fit: cover; }
+.product-img { width: 100%; height: 120px; object-fit: cover; border-radius: 12px; }
+.btn-black { background-color: #111; color: #fff; border-radius: 8px; width: 100%; padding: 12px; }
+.btn-black:hover { background-color: #333; color: #fff; }
+
+/* Bottom Navigation */
+.bottom-nav {
+    position: fixed; bottom: 0; max-width: 414px; width: 100%;
+    background: #fff; border-top: 1px solid #eee;
+    display: flex; justify-content: space-around; padding: 10px 0;
+    z-index: 1000;
+}
+.bottom-nav button { background: none; border: none; color: #555; font-size: 24px; }
+.bottom-nav button.active { color: #111; font-weight: bold; }
+
+/* Sembunyikan halaman secara default */
+.view-section { display: none; }
+.view-section.active { display: block; }
+
+/* Badge Keranjang */
+#cart-badge {
+    position: absolute; top: 5px; right: 25px;
+    font-size: 10px; background: red; color: white;
+    border-radius: 50%; padding: 2px 6px; display: none;
+}
