@@ -83,6 +83,7 @@
 </template>
 
 <script setup>
+const base = import.meta.env.BASE_URL
 import { ref, computed } from 'vue'
 import ProductCard from './ProductCard.vue'
 
@@ -108,8 +109,8 @@ const banners = ref([
 ])
 
 const categories = ref([
-  { id: 1, name: 'Rabeg',   image: '/images/Untitled4.jpeg' },
-  { id: 2, name: 'Sate',    image: '/images/Untitled.jpeg' },
+  { id: 1, name: 'Rabeg',   image: `${base}/images/Untitled4.jpeg` },
+  { id: 2, name: 'Sate',    image: `${base}/images/Untitled.jpeg` },
   { id: 3, name: 'Pecak',   image: 'https://images.unsplash.com/photo-1572656631137-7935297eff55?auto=format&fit=crop&w=150&q=80' },
   { id: 4, name: 'Nasi',    image: 'https://images.unsplash.com/photo-1516714435131-44d6b64dc6a2?auto=format&fit=crop&w=150&q=80' },
   { id: 5, name: 'Seafood', image: 'https://images.unsplash.com/photo-1559737558-2f5a35f4523b?auto=format&fit=crop&w=150&q=80' },
@@ -117,9 +118,9 @@ const categories = ref([
 ])
 
 const products = ref([
-  { id: 1,  nama: 'Rabeg H.Naswi Magersari',  harga: 16000, category: 1, image: '/images/Untitled4.jpeg' },
+  { id: 1,  nama: 'Rabeg H.Naswi Magersari',  harga: 16000, category: 1, image: `${base}/images/Untitled4.jpeg` },
   { id: 2,  nama: 'Rabeg Kambing Pak Udin',    harga: 20000, category: 1, image: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=300&q=80' },
-  { id: 3,  nama: 'Sate Bandeng Ratu Toety',   harga: 40000, category: 2, image: '/images/Satebandeng.jpeg' },
+  { id: 3,  nama: 'Sate Bandeng Ratu Toety',   harga: 40000, category: 2, image: `${base}/images/Satebandeng.jpeg` },
   { id: 4,  nama: 'Sate Ayam Depok',           harga: 35000, category: 2, image: 'https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?auto=format&fit=crop&w=300&q=80' },
   { id: 5,  nama: 'Sate Kambing Muda',         harga: 38000, category: 2, image: 'https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?auto=format&fit=crop&w=300&q=80' },
   { id: 6,  nama: 'Nasi Kuning Tuban',         harga: 22000, category: 4, image: 'https://images.unsplash.com/photo-1516714435131-44d6b64dc6a2?auto=format&fit=crop&w=300&q=80' },
