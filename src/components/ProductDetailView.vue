@@ -75,6 +75,7 @@
 
 <script setup>
 import { ref } from 'vue'
+const base = import.meta.env.BASE_URL
 
 const props = defineProps({
   product: { type: Object, required: true }

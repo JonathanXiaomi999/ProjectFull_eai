@@ -13,26 +13,32 @@
       >
     </div>
 
-    <!-- Banner Carousel -->
-    <div id="bannerCarousel" class="carousel slide rounded-4 overflow-hidden mb-4" data-bs-ride="carousel">
-      <div class="carousel-indicators">
-        <button v-for="(banner, i) in banners" :key="i"
-          type="button"
-          :data-bs-target="'#bannerCarousel'"
-          :data-bs-slide-to="i"
-          :class="{ active: i === 0 }"
-        ></button>
-      </div>
-      <div class="carousel-inner">
-        <div v-for="(banner, i) in banners" :key="i" class="carousel-item" :class="{ active: i === 0 }">
-          <img :src="banner.image" class="d-block w-100" style="height:160px; object-fit:cover;" :alt="banner.title">
-          <div class="carousel-caption d-block text-start p-3" style="bottom:0; left:0; background:linear-gradient(transparent,rgba(0,0,0,0.55));">
-            <h6 class="fw-bold text-white mb-0">{{ banner.title }}</h6>
-            <small class="text-white-50">{{ banner.subtitle }}</small>
-          </div>
-        </div>
+<!-- Banner Carousel -->
+<div class="carousel-wrap mb-4" @touchstart="onTouchStart" @touchend="onTouchEnd">
+  <div class="carousel-track" :style="{ transform: `translateX(-${currentSlide * 100}%)` }">
+    <div v-for="(banner, i) in banners" :key="i" class="carousel-slide">
+      <img :src="banner.image" class="d-block w-100" style="height:160px; object-fit:cover;" :alt="banner.title">
+      <div class="carousel-caption-custom">
+        <h6 class="fw-bold text-white mb-0">{{ banner.title }}</h6>
+        <small class="text-white-50">{{ banner.subtitle }}</small>
       </div>
     </div>
+  </div>
+
+  <!-- Arrows -->
+  <button class="carousel-btn left" @click="prevSlide">&#8249;</button>
+  <button class="carousel-btn right" @click="nextSlide">&#8250;</button>
+
+  <!-- Dots -->
+  <div class="carousel-dots">
+    <span
+      v-for="(_, i) in banners" :key="i"
+      class="dot"
+      :class="{ active: currentSlide === i }"
+      @click="currentSlide = i"
+    ></span>
+  </div>
+</div>
 
     <!-- Categories -->
     <div class="d-flex justify-content-between align-items-center mb-2">
@@ -84,7 +90,7 @@
 
 <script setup>
 const base = import.meta.env.BASE_URL
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted, onUnmounted } from 'vue'
 import ProductCard from './ProductCard.vue'
 
 const searchQuery = ref('')
@@ -108,26 +114,52 @@ const banners = ref([
   }
 ])
 
+// Carousel
+const currentSlide = ref(0)
+let autoplayTimer = null
+
+const nextSlide = () => {
+  currentSlide.value = (currentSlide.value + 1) % banners.value.length
+}
+const prevSlide = () => {
+  currentSlide.value = (currentSlide.value - 1 + banners.value.length) % banners.value.length
+}
+
+// Swipe support
+let touchStartX = 0
+const onTouchStart = (e) => { touchStartX = e.touches[0].clientX }
+const onTouchEnd = (e) => {
+  const diff = touchStartX - e.changedTouches[0].clientX
+  if (diff > 50) nextSlide()
+  else if (diff < -50) prevSlide()
+}
+
+// Autoplay
+onMounted(() => {
+  autoplayTimer = setInterval(nextSlide, 3500)
+})
+onUnmounted(() => clearInterval(autoplayTimer))
+
 const categories = ref([
   { id: 1, name: 'Rabeg',   image: `${base}/images/Untitled4.jpeg` },
   { id: 2, name: 'Sate',    image: `${base}/images/Untitled.jpeg` },
-  { id: 3, name: 'Pecak',   image: 'https://images.unsplash.com/photo-1572656631137-7935297eff55?auto=format&fit=crop&w=150&q=80' },
+  { id: 3, name: 'Pecak',   image: `${base}/images/Untitled2.jpeg` },
   { id: 4, name: 'Nasi',    image: 'https://images.unsplash.com/photo-1516714435131-44d6b64dc6a2?auto=format&fit=crop&w=150&q=80' },
   { id: 5, name: 'Seafood', image: 'https://images.unsplash.com/photo-1559737558-2f5a35f4523b?auto=format&fit=crop&w=150&q=80' },
   { id: 6, name: 'Kue',     image: 'https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&w=150&q=80' },
 ])
 
 const products = ref([
-  { id: 1,  nama: 'Rabeg H.Naswi Magersari',  harga: 16000, category: 1, image: `${base}/images/Untitled4.jpeg` },
-  { id: 2,  nama: 'Rabeg Kambing Pak Udin',    harga: 20000, category: 1, image: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=300&q=80' },
+  { id: 1,  nama: 'Rabeg H.Naswi Magersari',   harga: 16000, category: 1, image: `${base}/images/Untitled4.jpeg` },
+  { id: 2,  nama: 'Rabeg Kambing Pak Udin',    harga: 20000, category: 1, image: `${base}/images/Rabegkambing.jpg` },
   { id: 3,  nama: 'Sate Bandeng Ratu Toety',   harga: 40000, category: 2, image: `${base}/images/Satebandeng.jpeg` },
-  { id: 4,  nama: 'Sate Ayam Depok',           harga: 35000, category: 2, image: 'https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?auto=format&fit=crop&w=300&q=80' },
-  { id: 5,  nama: 'Sate Kambing Muda',         harga: 38000, category: 2, image: 'https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?auto=format&fit=crop&w=300&q=80' },
+  { id: 4,  nama: 'Sate Bebek',                harga: 35000, category: 2, image: `${base}/images/satebebek.webp` },
+  { id: 5,  nama: 'Sate Kambing Muda',         harga: 38000, category: 2, image: `${base}/images/satekambing.webp` },
   { id: 6,  nama: 'Nasi Kuning Tuban',         harga: 22000, category: 4, image: 'https://images.unsplash.com/photo-1516714435131-44d6b64dc6a2?auto=format&fit=crop&w=300&q=80' },
   { id: 7,  nama: 'Nasi Goreng Surabaya',      harga: 25000, category: 4, image: 'https://images.unsplash.com/photo-1516714435131-44d6b64dc6a2?auto=format&fit=crop&w=300&q=80' },
   { id: 8,  nama: 'Nasi Uduk Betawi',          harga: 18000, category: 4, image: 'https://images.unsplash.com/photo-1516714435131-44d6b64dc6a2?auto=format&fit=crop&w=300&q=80' },
-  { id: 9,  nama: 'Pecak Lele Khas Banten',    harga: 28000, category: 3, image: 'https://images.unsplash.com/photo-1572656631137-7935297eff55?auto=format&fit=crop&w=300&q=80' },
-  { id: 10, nama: 'Pecak Gurame Bakar',        harga: 45000, category: 3, image: 'https://images.unsplash.com/photo-1572656631137-7935297eff55?auto=format&fit=crop&w=300&q=80' },
+  { id: 9,  nama: 'Pecak Ikan Tuna',           harga: 28000, category: 3, image: `${base}/images/Pecaktuna.jpeg` },
+  { id: 10, nama: 'Pecak Bandeng',             harga: 45000, category: 3, image: `${base}/images/Pecakbandeng.webp` },
   { id: 11, nama: 'Udang Bakar Mentega',       harga: 55000, category: 5, image: 'https://images.unsplash.com/photo-1559737558-2f5a35f4523b?auto=format&fit=crop&w=300&q=80' },
   { id: 12, nama: 'Cumi Saus Tiram',           harga: 48000, category: 5, image: 'https://images.unsplash.com/photo-1559737558-2f5a35f4523b?auto=format&fit=crop&w=300&q=80' },
 ])
@@ -158,3 +190,70 @@ const addToCart = (product) => {
   emit('add-to-cart', product)
 }
 </script>
+
+<style scoped>
+.carousel-wrap {
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.carousel-slide {
+  min-width: 100%;
+  position: relative;
+}
+
+.carousel-caption-custom {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 12px 16px;
+  background: linear-gradient(transparent, rgba(0,0,0,0.6));
+}
+
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255,255,255,0.85);
+  border: none;
+  border-radius: 50%;
+  width: 32px; height: 32px;
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+  z-index: 10;
+}
+.carousel-btn:hover { background: #fff; }
+.carousel-btn.left { left: 10px; }
+.carousel-btn.right { right: 10px; }
+
+.carousel-dots {
+  position: absolute;
+  bottom: 10px;
+  right: 12px;
+  display: flex;
+  gap: 5px;
+}
+
+.dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.5);
+  cursor: pointer;
+  transition: background 0.2s, width 0.2s;
+}
+.dot.active {
+  background: #fff;
+  width: 18px;
+  border-radius: 3px;
+}
+</style>

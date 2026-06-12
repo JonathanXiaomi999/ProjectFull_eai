@@ -126,6 +126,7 @@
 <script setup>
 import { ref, computed } from 'vue'
 import { formatRp } from '../utils/formatters'
+const base = import.meta.env.BASE_URL
 
 const searchQuery = ref('')
 const activeTab = ref('Semua')
@@ -140,18 +141,18 @@ const addToCart = (product) => {
 const trendingItems = ref([
   {
     id: 1, name: 'Warung Rabeg Favorit', category: 'Rabeg', rating: 4.8, distance: '0.3 km', isOpen: true,
-    image: 'https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=300&q=80',
+    image: `${base}/images/Untitled4.jpeg`,
     products: [
-      { id: 101, nama: 'Rabeg Kambing', harga: 18000 },
-      { id: 102, nama: 'Rabeg Spesial', harga: 22000 },
+      { id: 101, nama: 'Rabeg Kambing', harga: 18000, image: `${base}/images/Untitled4.jpeg` },
+      { id: 102, nama: 'Rabeg Spesial', harga: 22000, image: `${base}/images/Untitled4.jpeg` },
     ]
   },
   {
     id: 2, name: 'Sate Bandeng Serang', category: 'Sate', rating: 4.7, distance: '0.5 km', isOpen: true,
-    image: 'https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?auto=format&fit=crop&w=300&q=80',
+    image: `${base}/images/Satebandeng.jpeg`,
     products: [
-      { id: 103, nama: 'Sate Bandeng', harga: 40000 },
-      { id: 104, nama: 'Sate Ayam', harga: 25000 },
+      { id: 103, nama: 'Sate Bandeng', harga: 40000, image: `${base}/images/Satebandeng.jpeg` },
+      { id: 104, nama: 'Sate Bebek', harga: 25000, image: `${base}/images/satebebek.webp` },
     ]
   },
   {
@@ -163,11 +164,11 @@ const trendingItems = ref([
     ]
   },
   {
-    id: 4, name: 'Pecak Lele Pak Haji', category: 'Pecak', rating: 4.6, distance: '0.8 km', isOpen: true,
-    image: 'https://images.unsplash.com/photo-1572656631137-7935297eff55?auto=format&fit=crop&w=300&q=80',
+    id: 4, name: 'Pecak Ikan Tuna', category: 'Pecak', rating: 4.6, distance: '0.8 km', isOpen: true,
+    image: `${base}/images/Pecaktuna.jpeg`,
     products: [
-      { id: 107, nama: 'Pecak Lele', harga: 28000 },
-      { id: 108, nama: 'Pecak Gurame', harga: 45000 },
+      { id: 107, nama: 'Pecak Ikan Tuna', harga: 28000, image: `${base}/images/Pecaktuna.jpeg` },
+      { id: 108, nama: 'Pecak Bandeng', harga: 45000, image: `${base}/images/Pecakbandeng.webp` },
     ]
   },
   {
@@ -180,10 +181,10 @@ const trendingItems = ref([
   },
   {
     id: 6, name: 'Sate Kambing Muda', category: 'Sate', rating: 4.4, distance: '1.5 km', isOpen: true,
-    image: 'https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?auto=format&fit=crop&w=300&q=80',
+    image: `${base}/images/satekambing.webp`,
     products: [
-      { id: 111, nama: 'Sate Kambing', harga: 38000 },
-      { id: 112, nama: 'Sate Kikil', harga: 30000 },
+      { id: 111, nama: 'Sate Kambing', harga: 38000, image: `${base}/images/satekambing.webp` },
+      { id: 112, nama: 'Sate Kikil', harga: 30000, image: `${base}/images/satekikil.webp` },
     ]
   },
 ])
@@ -191,32 +192,32 @@ const trendingItems = ref([
 const nearbyRestos = ref([
   {
     id: 1, name: 'Warung Rabeg H. Naswi', category: 'Rabeg', rating: 4.8, distance: '0.3 km',
-    image: 'https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=150&q=80',
+    image: `${base}/images/Untitled4.jpeg`,
     products: [
-      { id: 201, nama: 'Rabeg H.Naswi', harga: 16000 },
-      { id: 202, nama: 'Rabeg Spesial', harga: 20000 },
-      { id: 203, nama: 'Es Teh Manis', harga: 5000 },
-      { id: 204, nama: 'Nasi Putih', harga: 4000 },
+      { id: 201, nama: 'Rabeg H.Naswi', harga: 16000, image: `${base}/images/Untitled4.jpeg` },
+      { id: 202, nama: 'Rabeg Spesial', harga: 20000, image: `${base}/images/Untitled4.jpeg` },
+      { id: 203, nama: 'Es Teh Manis', harga: 5000, image: `${base}/images/esteh.webp` },
+      { id: 204, nama: 'Nasi Putih', harga: 4000, image: `${base}/images/nasiputih.webp` },
     ]
   },
   {
     id: 2, name: 'Sate Bandeng Ratu Toety', category: 'Sate', rating: 4.7, distance: '0.5 km',
-    image: 'https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?auto=format&fit=crop&w=150&q=80',
+    image: `${base}/images/Satebandeng.jpeg`,
     products: [
-      { id: 205, nama: 'Sate Bandeng', harga: 40000 },
-      { id: 206, nama: 'Sate Ayam', harga: 35000 },
-      { id: 207, nama: 'Lontong', harga: 5000 },
-      { id: 208, nama: 'Es Jeruk', harga: 8000 },
+      { id: 205, nama: 'Sate Bandeng', harga: 40000, image: `${base}/images/Satebandeng.jpeg` },
+      { id: 206, nama: 'Sate Bebek', harga: 35000, image: `${base}/images/satebebek.webp` },
+      { id: 207, nama: 'Lontong', harga: 5000, image: `${base}/images/Lontong Sayur.webp` },
+      { id: 208, nama: 'Es Jeruk', harga: 8000, image: `${base}/images/esjeruk.webp` },
     ]
   },
   {
     id: 3, name: 'RM Nasi Kuning Tuban', category: 'Nasi', rating: 4.5, distance: '1.1 km',
     image: 'https://images.unsplash.com/photo-1516714435131-44d6b64dc6a2?auto=format&fit=crop&w=150&q=80',
     products: [
-      { id: 209, nama: 'Nasi Kuning', harga: 22000 },
-      { id: 210, nama: 'Nasi Goreng', harga: 25000 },
-      { id: 211, nama: 'Nasi Uduk', harga: 18000 },
-      { id: 212, nama: 'Teh Hangat', harga: 5000 },
+      { id: 209, nama: 'Nasi Kuning', harga: 22000, image: `${base}/images/nasikuning.webp` },
+      { id: 210, nama: 'Nasi Goreng', harga: 25000, image: `${base}/images/nasigoreng.webp` },
+      { id: 211, nama: 'Nasi Uduk', harga: 18000, image: `${base}/images/nasiuduk.webp` },
+      { id: 212, nama: 'Teh Hangat', harga: 5000, image: `${base}/images/tehanget.webp` },
     ]
   },
 ])
