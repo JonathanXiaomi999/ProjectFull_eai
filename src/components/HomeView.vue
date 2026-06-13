@@ -100,17 +100,17 @@ const banners = ref([
   {
     title: 'Menu Legendaris Minggu Ini',
     subtitle: 'Rabeg & Sate khas Banten tersedia!',
-    image: '${base}/images/Untitled4.jpeg'
+    image: `${base}images/Untitled4.jpeg`
   },
   {
     title: 'Promo Spesial Nasi Kuning',
     subtitle: 'Diskon 20% setiap hari Minggu',
-    image: '${base}/images/nasikuning.webp'
+    image: `${base}images/nasikuning.webp`
   },
   {
     title: 'Sate Bandeng Khas Serang',
     subtitle: 'Duri lunak, rasa otentik sejak 1985',
-    image: '${base}/images/Satebandeng.jpeg'
+    image: `${base}images/Satebandeng.jpeg`
   }
 ])
 
