@@ -100,17 +100,17 @@ const banners = ref([
   {
     title: 'Menu Legendaris Minggu Ini',
     subtitle: 'Rabeg & Sate khas Banten tersedia!',
-    image: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=600&q=80'
+    image: '${base}/images/Untitled4.jpeg'
   },
   {
     title: 'Promo Spesial Nasi Kuning',
     subtitle: 'Diskon 20% setiap hari Minggu',
-    image: 'https://images.unsplash.com/photo-1516714435131-44d6b64dc6a2?auto=format&fit=crop&w=600&q=80'
+    image: '${base}/images/nasikuning.webp'
   },
   {
     title: 'Sate Bandeng Khas Serang',
     subtitle: 'Duri lunak, rasa otentik sejak 1985',
-    image: 'https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?auto=format&fit=crop&w=600&q=80'
+    image: '${base}/images/Satebandeng.jpeg'
   }
 ])
 
