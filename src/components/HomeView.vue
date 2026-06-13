@@ -100,7 +100,7 @@ const banners = ref([
   {
     title: 'Menu Legendaris Minggu Ini',
     subtitle: 'Rabeg & Sate khas Banten tersedia!',
-    image: `${base}images/Untitled41.png`
+    image: `${base}images/Untitled41.webp`
   },
   {
     title: 'Promo Spesial Nasi Kuning',
@@ -141,7 +141,7 @@ onMounted(() => {
 onUnmounted(() => clearInterval(autoplayTimer))
 
 const categories = ref([
-  { id: 1, name: 'Rabeg',   image: `${base}/images/Untitled41.png` },
+  { id: 1, name: 'Rabeg',   image: `${base}/images/Untitled41.webp` },
   { id: 2, name: 'Sate',    image: `${base}/images/Untitled.jpeg` },
   { id: 3, name: 'Pecak',   image: `${base}/images/Untitled2.jpeg` },
   { id: 4, name: 'Nasi',    image: 'https://images.unsplash.com/photo-1516714435131-44d6b64dc6a2?auto=format&fit=crop&w=150&q=80' },
@@ -150,7 +150,7 @@ const categories = ref([
 ])
 
 const products = ref([
-  { id: 1,  nama: 'Rabeg H.Naswi Magersari',   harga: 16000, category: 1, image: `${base}/images/Untitled41.png` },
+  { id: 1,  nama: 'Rabeg H.Naswi Magersari',   harga: 16000, category: 1, image: `${base}/images/Untitled41.webp` },
   { id: 2,  nama: 'Rabeg Kambing Pak Udin',    harga: 20000, category: 1, image: `${base}/images/Rabegkambing.jpg` },
   { id: 3,  nama: 'Sate Bandeng Ratu Toety',   harga: 40000, category: 2, image: `${base}/images/Satebandeng.jpeg` },
   { id: 4,  nama: 'Sate Bebek',                harga: 35000, category: 2, image: `${base}/images/satebebek.webp` },

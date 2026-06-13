@@ -141,10 +141,10 @@ const addToCart = (product) => {
 const trendingItems = ref([
   {
     id: 1, name: 'Warung Rabeg Favorit', category: 'Rabeg', rating: 4.8, distance: '0.3 km', isOpen: true,
-    image: `${base}/images/Untitled41.png`,
+    image: `${base}/images/Untitled41.webp`,
     products: [
-      { id: 101, nama: 'Rabeg Kambing', harga: 18000, image: `${base}/images/Untitled41.png` },
-      { id: 102, nama: 'Rabeg Spesial', harga: 22000, image: `${base}/images/Untitled41.png` },
+      { id: 101, nama: 'Rabeg Kambing', harga: 18000, image: `${base}/images/Untitled41.webp` },
+      { id: 102, nama: 'Rabeg Spesial', harga: 22000, image: `${base}/images/Untitled41.webp` },
     ]
   },
   {
@@ -192,10 +192,10 @@ const trendingItems = ref([
 const nearbyRestos = ref([
   {
     id: 1, name: 'Warung Rabeg H. Naswi', category: 'Rabeg', rating: 4.8, distance: '0.3 km',
-    image: `${base}/images/Untitled4.jpeg`,
+    image: `${base}/images/Untitled41.webp`,
     products: [
-      { id: 201, nama: 'Rabeg H.Naswi', harga: 16000, image: `${base}/images/Untitled4.jpeg` },
-      { id: 202, nama: 'Rabeg Spesial', harga: 20000, image: `${base}/images/Untitled4.jpeg` },
+      { id: 201, nama: 'Rabeg H.Naswi', harga: 16000, image: `${base}/images/Untitled41.webp` },
+      { id: 202, nama: 'Rabeg Spesial', harga: 20000, image: `${base}/images/Untitled41.webp` },
       { id: 203, nama: 'Es Teh Manis', harga: 5000, image: `${base}/images/esteh.webp` },
       { id: 204, nama: 'Nasi Putih', harga: 4000, image: `${base}/images/nasiputih.webp` },
     ]
