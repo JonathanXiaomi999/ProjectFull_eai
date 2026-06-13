@@ -141,10 +141,10 @@ const addToCart = (product) => {
 const trendingItems = ref([
   {
     id: 1, name: 'Warung Rabeg Favorit', category: 'Rabeg', rating: 4.8, distance: '0.3 km', isOpen: true,
-    image: `${base}/images/Untitled4.jpeg`,
+    image: `${base}/images/Untitled41.png`,
     products: [
-      { id: 101, nama: 'Rabeg Kambing', harga: 18000, image: `${base}/images/Untitled4.jpeg` },
-      { id: 102, nama: 'Rabeg Spesial', harga: 22000, image: `${base}/images/Untitled4.jpeg` },
+      { id: 101, nama: 'Rabeg Kambing', harga: 18000, image: `${base}/images/Untitled41.png` },
+      { id: 102, nama: 'Rabeg Spesial', harga: 22000, image: `${base}/images/Untitled41.png` },
     ]
   },
   {
