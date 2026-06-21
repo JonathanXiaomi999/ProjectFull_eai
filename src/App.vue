@@ -125,7 +125,7 @@ const isLoading = ref(true)
 const showSplash = ref(true)
 const loadProgress = ref(0)
 const selectedProduct = ref(null)
-const isDesktop = ref(window.innerWidth >= 1024)
+const isDesktop = ref(window.innerWidth >= 980)
 const cart = useCartStore()
 const toastRef = ref(null)
 
@@ -137,7 +137,7 @@ const navItems = [
   { view: 'profile',       label: 'Profil',       icon: 'bi bi-person' },
 ]
 
-const onResize = () => { isDesktop.value = window.innerWidth >= 1024 }
+const onResize = () => { isDesktop.value = window.innerWidth >= 980 }
 
 onMounted(() => {
   window.addEventListener('resize', onResize)
